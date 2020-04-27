@@ -45,7 +45,7 @@
   }
 
   .history {
-    width: 1000px;
+    width: 900px;
     text-align: center;
     margin: auto;
   }

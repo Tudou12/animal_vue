@@ -2,24 +2,24 @@
   <div class="home">
     <nav-menu></nav-menu>
     <div class="body">
-      <router-view/>
       <div class="area">
         <img src="../../assets/image/home4.png" style="width:100%;hight:50px;margin-top:20px;"/>
         <div class="News">
-          <News id="News" ></News>
+          <News id="News"></News>
         </div>
         <div class="Step">
-          <Step id="Step" ></Step>
+          <Step id="Step"></Step>
         </div>
+        <router-view/>
         <div class="dog">
-          <dog id="dog" ></dog>
+          <dog id="dog"></dog>
         </div>
         <div class="cat">
-          <cat id="cat" ></cat>
+          <cat id="cat"></cat>
         </div>
-        <el-row>
-        </el-row>
       </div>
+      <el-row>
+      </el-row>
     </div>
   </div>
 </template>
@@ -46,6 +46,7 @@
     margin-right: auto;
     background-color: #FFFFFF;
   }
+
   .area {
     width: 900px;
     margin-left: auto;

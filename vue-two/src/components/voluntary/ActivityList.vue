@@ -13,7 +13,6 @@
       </el-steps>
     </div>
     <div>
-      <voluntary-from></voluntary-from>
       <el-table
         :data="lists"
         border
@@ -55,18 +54,14 @@
           label="操作"
           width="100">
           <template>
-            <el-button
-              @click="handleClick()"
-              type="primary"
-              size="small"
-              icon="el-icon-edit">
-              查看
-            </el-button>
+            <el-button  type="success" @click="dialogFormVisible = true">申请</el-button>
           </template>
         </el-table-column>
       </el-table>
+      <voluntary-from v-if="dialogFormVisible" @close="handleClose"/>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -81,6 +76,7 @@
         lists: [{
           // activityName:'1111',
         }],
+        dialogFormVisible: false
       }
     },
     mounted() {
@@ -92,6 +88,9 @@
       }
     },
     methods: {
+      handleClose() {
+        this.dialogFormVisible = false
+      },
       searchForm() {
         this.loadLists();
       },
@@ -139,9 +138,8 @@
   .step {
     margin-bottom: 15px;
   }
-
   .list {
-    width: 1000px;
+    width: 900px;
     text-align: center;
     margin: auto;
   }

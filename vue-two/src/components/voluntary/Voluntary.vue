@@ -24,9 +24,9 @@
         <div class="activity-list">
           <activity-list id="activity-list"></activity-list>
         </div>
-        <div class="activity-manage">
-          <activity-manage id="activity-manage"></activity-manage>
-        </div>
+<!--        <div class="activity-manage">-->
+<!--          <activity-manage id="activity-manage"></activity-manage>-->
+<!--        </div>-->
       </div>
     </div>
   </div>

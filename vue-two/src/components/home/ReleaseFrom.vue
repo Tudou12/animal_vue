@@ -1,9 +1,6 @@
 <template>
   <div id="Home">
     <div id="body">
-      <el-button type="text" @click="dialogFormVisible = true">
-        <h2>我要发布</h2>
-      </el-button>
       <el-dialog title="走失宠物信息表" :visible.sync="dialogFormVisible" @close="clear" style="text-align:center;font-size: 30px">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="50px" class="ruleForm">
           <el-form-item label="名字" prop="aName">
@@ -146,5 +143,7 @@
   };
 </script>
 <style scoped>
-
+.button{
+  text-align: center;
+}
 </style>

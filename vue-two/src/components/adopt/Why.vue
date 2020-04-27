@@ -27,7 +27,7 @@
       <div class="image">
         <img src="../../assets/image/2.jpg"/>
       </div>
-      <b>若你选择去爱上一只猫或一只狗，请把目光投向它的身后。不去光顾这种生意，能为它和世界增添一点美好的希望。</b>
+      <b>若你选择去爱上一只猫或一只狗，不去光顾这种生意，能为它和世界增添一点美好的希望。</b>
     </div>
   </div>
 </template>
@@ -41,6 +41,10 @@
   };
 </script>
 <style>
+  .body{
+    width: 900px;
+    margin: auto;
+  }
   #text {
     list-style: none;
     line-height: 30px;
@@ -62,7 +66,4 @@
    #Top{
      text-align: center;
    }
-  /* .body{
-    background-color: goldenrod;
-  } */
 </style>

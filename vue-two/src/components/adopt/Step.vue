@@ -44,6 +44,8 @@
   .body {
     /* background-color: darkturquoise; */
     text-align: center;
+    width: 900px;
+    margin: auto;
   }
 
   .el-row {

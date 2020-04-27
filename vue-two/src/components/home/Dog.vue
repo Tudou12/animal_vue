@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3>走失狗狗区</h3>
+    <div class="top_dog">
+      <h2>走失狗狗区</h2>
+    </div>
     <el-row style="height: 250px;">
       <el-tooltip effect="dark" placement="right"
                   v-for="item in losts"
@@ -94,24 +96,6 @@
     /*margin: 0 auto;*/
   }
 
-  .title {
-    font-size: 15px;
-    text-align: left;
-  }
-
-  .author {
-    color: #333;
-    width: 102px;
-    font-size: 13px;
-    margin-bottom: 6px;
-    text-align: left;
-  }
-
-  .abstract {
-    display: block;
-    line-height: 17px;
-  }
-
   a {
     text-decoration: none;
   }
@@ -120,8 +104,7 @@
     color: #3377aa;
   }
 
-  h3 {
-    margin-bottom: 15px;
+  h2 {
+    text-align: center;
   }
-
 </style>

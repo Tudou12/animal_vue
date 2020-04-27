@@ -1,9 +1,10 @@
 <template>
   <div id="Home">
     <div id="body">
-      <!-- <el-button type="success" class="button" @click="dialogFormVisible = true">申请</el-button> -->
-      <el-button class="button" type="success" @click="dialogFormVisible = true">申请</el-button>
-      <el-dialog title="志愿者申请表" :visible.sync="dialogFormVisible">
+     <el-dialog title="志愿者申请表"
+                 :visible.sync="dialogFormVisible"
+                 @close="handleClose"
+      >
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="ruleForm">
           <el-form-item label="姓名" prop="name">
             <el-input v-model="ruleForm.name"></el-input>
@@ -87,10 +88,14 @@
           {url: require('../../assets/image/8.jpg'), link: '/content1'},
           {url: require('../../assets/image/7.jpg'), link: '/content1'},
         ],
-        dialogFormVisible: false,
+        dialogFormVisible: true,
       }
     },
     methods: {
+      handleClose() {
+        this.dialogFormVisible = false
+        this.$emit('close', false)
+      },
       submitForm(ruleForm) {
         this.$axios
           .post('/voluntary/add', {
@@ -121,8 +126,4 @@
   }
 </script>
 <style scoped>
-  .button {
-    margin: 18px 0 0 10px;
-  }
-
 </style>

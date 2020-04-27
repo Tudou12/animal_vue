@@ -1,17 +1,17 @@
 <template>
-  <div class="body">
+  <div class="body_adopt">
     <nav-menu></nav-menu>
     <router-view/>
-    <div id="Adopt">
-      <Side @indexSelect="listByCategory" ref="side"></Side>
+    <Side @indexSelect="listByCategory" ref="side"></Side>
+    <div id="adopt">
       <div id="why">
-        <why class="area"></why>
+        <why ></why>
       </div>
       <div id="step">
-        <step class="area"></step>
+        <step ></step>
       </div>
       <div id="cat">
-        <stray-cat class="area" ref="strayCat"></stray-cat>
+        <stray-cat  ref="strayCat"></stray-cat>
       </div>
     </div>
   </div>
@@ -45,15 +45,10 @@
   };
 </script>
 <style>
-  * {
+  *{
     margin: 0px;
   }
-  .area {
-     width: 900px;
-     margin-left: auto;
-     margin-right: auto;
-   }
-  #Adopt {
+  #adopt {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;

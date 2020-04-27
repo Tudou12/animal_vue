@@ -1,6 +1,12 @@
 <template>
   <div class="body">
-    <h1>发布步骤</h1>
+    <h2>发布步骤</h2>
+    <div class="button_dog">
+      <el-button  size="medium" type="text" @click="dialogFormVisible = true">
+        <h2>我要发布</h2>
+        <i size="big" class="el-icon-thumb" ></i>
+      </el-button>
+    </div>
     <div class="step">
       <el-steps :active="4" align-center>
         <el-step title="步骤1" description="如有宠物丢失或捡到丢失宠物请点击“我要发布"></el-step>
@@ -21,16 +27,17 @@
   }
 </script>
 <style scoped>
-
+  h2 {
+    text-align: center;
+  }
+  .button_dog{
+    text-align: center;
+    margin: 0px;
+  }
   .body {
-    /* background-color: darkturquoise; */
+    width: 900px;
     margin-top: 10px;
     border-style: dashed;
     border-color: lightblue;
   }
-
-  /* .el-steps{
-  margin: 20px;
-  } */
-
 </style>

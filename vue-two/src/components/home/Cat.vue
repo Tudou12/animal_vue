@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h3>走失猫咪区</h3>
-    <b> 走失猫咪区</b>
+  <div class="cat">
+    <h2>走失猫咪区</h2>
     <el-row style="height: 250px;">
       <el-tooltip effect="dark" placement="right"
                   v-for="item in losts"
@@ -73,6 +72,7 @@
 </script>
 
 <style scoped>
+
   .card {
     font-size: 13px;
     margin-bottom: 6px
@@ -98,25 +98,9 @@
     /* border-radius:50px; */
     /*margin: 0 auto;*/
   }
-
-  .title {
-    font-size: 15px;
-    text-align: left;
+  .cat{
+    margin-top: 20px;
   }
-
-  .author {
-    color: #333;
-    width: 102px;
-    font-size: 13px;
-    margin-bottom: 6px;
-    text-align: left;
-  }
-
-  .abstract {
-    display: block;
-    line-height: 17px;
-  }
-
   a {
     text-decoration: none;
   }
@@ -125,9 +109,8 @@
     color: #3377aa;
   }
 
-  h3 {
-    /* background-color: #3377aa; */
-    margin-bottom: 15px;
+  h2 {
+    text-align: center;
   }
 
 </style>
