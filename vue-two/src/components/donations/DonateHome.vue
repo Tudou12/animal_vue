@@ -9,7 +9,7 @@
   import NavMenu from '../common/NavMenu';
 
   export default {
-    name: 'Donation',
+    name: 'DonateHome',
     components: {NavMenu}
 
   }

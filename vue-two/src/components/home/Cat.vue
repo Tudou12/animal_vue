@@ -1,6 +1,9 @@
 <template>
   <div class="cat">
+    <span style="margin-top:20px">
     <h2>走失猫咪区</h2>
+    </span>
+    <el-card >
     <el-row style="height: 250px;">
       <el-tooltip effect="dark" placement="right"
                   v-for="item in losts"
@@ -28,6 +31,7 @@
         </el-card>
       </el-tooltip>
     </el-row>
+    </el-card>
   </div>
 </template>
 
@@ -111,6 +115,7 @@
 
   h2 {
     text-align: center;
+    width: 900px;
   }
 
 </style>

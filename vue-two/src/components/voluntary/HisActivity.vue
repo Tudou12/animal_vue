@@ -3,33 +3,34 @@
     <div class="title">
       <h1>往期回顾</h1>
     </div>
+    <el-card style="margin-top:15px">
     <el-row :gutter="20">
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content">
           <img src="../../assets/image/7.jpg"/>
           <b>领养日活动</b>
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content">
           <img src="../../assets/image/7.jpg"/>
           <b>回访日活动</b>
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content">
           <img src="../../assets/image/7.jpg"/>
           <b>犬舍服务</b>
         </div>
       </el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content">
           <img src="../../assets/image/7.jpg"/>
           <b>犬舍服务</b>
         </div>
       </el-col>
-      <!--<el-col :span="6"><div class="grid-content bg-purple"></div></el-col> -->
     </el-row>
+    </el-card>
   </div>
 </template>
 
@@ -58,18 +59,6 @@
     border-radius: 4px;
   }
 
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-
-  .bg-purple {
-    background: #d3dce6;
-  }
-
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-
   .grid-content {
     border-radius: 4px;
     min-height: 36px;
@@ -81,7 +70,7 @@
   }
 
   img {
-    height: 200px;
-    width: 220px;
+    height: 190px;
+    width: 190px;
   }
 </style>

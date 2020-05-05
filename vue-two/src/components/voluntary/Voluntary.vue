@@ -1,6 +1,8 @@
 <template>
   <div id="top">
+    <div id="nav-menu">
     <nav-menu></nav-menu>
+    </div>
     <SideMenu></SideMenu>
     <div id="body">
       <router-view/>
@@ -28,11 +30,16 @@
 <!--          <activity-manage id="activity-manage"></activity-manage>-->
 <!--        </div>-->
       </div>
+      <div class="footer">
+          <footer id="footer"></footer>
+        </div>
     </div>
   </div>
 </template>
 <script>
   import NavMenu from '../common/NavMenu';
+  import Footer from '../common/Footer';
+
   import SideMenu from './SideMenu';
   import VolIntroduce from './VolIntroduce';
   import Activity from './Activity';
@@ -42,7 +49,7 @@
 
   export default {
     name: 'Voluntary',
-    components: {NavMenu, SideMenu, VolIntroduce, Activity, HisActivity, ActivityList, ActivityManage},
+    components: {NavMenu, SideMenu, VolIntroduce, Activity, HisActivity, ActivityList, ActivityManage,Footer},
     data() {
       return {
         imgs: [

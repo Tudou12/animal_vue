@@ -2,38 +2,47 @@
   <el-menu
     class="adopter"
     default-active="0"
-    @select="handleSelect"
     active-text-color="red">
     <el-menu-item index="0">
-      <a href="#why">
-<!--        <i class="el-icon-menu"></i>-->
-        <span slot="title">为什么领养</span>
+      <a href="#nav-menu">
+       <i class="el-icon-top"></i>
+        <span slot="title">回到顶部</span>
       </a>
     </el-menu-item>
     <el-menu-item index="1">
-      <a href="#step">
-<!--        <i class="el-icon-menu"></i>-->
-        <span slot="title">如何领养</span>
+      <a href="#why">
+       <i class="el-icon-collection"></i>
+        <span slot="title">为什么领养</span>
       </a>
     </el-menu-item>
     <el-menu-item index="2">
-      <a href="#cat">
-<!--        <i class="el-icon-menu"></i>-->
-        <span slot="title">领养专区</span>
+      <a href="#step">
+       <i class="el-icon-postcard"></i>
+        <span slot="title">如何领养</span>
       </a>
     </el-menu-item>
     <el-menu-item index="3">
+      <a href="#cat">
+       <i class="el-icon-s-order"></i>
+        <span slot="title">领养专区</span>
+      </a>
+    </el-menu-item>
+    <el-menu-item index="4">
+      <a href="#footer">
+       <i class="el-icon-bottom"></i>
+        <span slot="title">回到底部</span>
+      </a>
+    </el-menu-item>
+    <!-- <el-menu-item index="3">
       <a href="ApplyList">
-<!--        <i class="el-icon-menu"></i>-->
         <span slot="title">我的申请</span>
       </a>
     </el-menu-item>
     <el-menu-item index="4">
       <a href="AdoptManage">
-<!--        <i class="el-icon-menu"></i>-->
         <span slot="title">领养管理</span>
       </a>
-    </el-menu-item>
+    </el-menu-item> -->
   </el-menu>
 </template>
 
@@ -46,10 +55,6 @@
       }
     },
     methods: {
-      handleSelect(key, keyPath) {
-        this.aid = key
-        this.$emit('indexSelect')
-      }
     }
   }
 </script>

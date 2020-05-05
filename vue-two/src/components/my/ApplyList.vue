@@ -68,7 +68,7 @@
 </template>
 
 <script>
-  import EditForm from './EditForm';
+  import EditForm from '../adopt/EditForm';
   import NavMenu from "../common/NavMenu";
 
   export default {

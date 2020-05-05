@@ -1,7 +1,11 @@
 <template>
-  <div class="body">
+  <div class="body_strayCat">
     <h1>领养专区</h1>
-    <el-card class="box-card">
+    <a href="Cat">
+      <h3>更多</h3>
+      <!-- <img src="../../assets/more.png" /> -->
+    </a>
+    <!-- <el-card class="box-card"> -->
       <el-row class="car">
         <el-tooltip effect="dark" placement="right"
                     v-for="item in cats"
@@ -27,11 +31,8 @@
           </el-card>
         </el-tooltip>
       </el-row>
-    </el-card>
-    <a href="Cat">
-      <h3>更多</h3>
-      <!-- <img src="../../assets/more.png" /> -->
-    </a>
+    <!-- </el-card> -->
+
   </div>
 </template>
 
@@ -132,7 +133,9 @@
   .apply {
     float: right;
   }
-
+  h1,h3{
+    text-align: center;
+  }
   /* #body{
     background-color: khaki;
   } */

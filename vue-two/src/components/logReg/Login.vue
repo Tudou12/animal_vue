@@ -1,6 +1,7 @@
 <template>
   <div class="body">
-    <el-form class="login-container" label-position="left"
+    <el-form class="login-container"
+             label-position="left"
              label-width="0px">
       <h3 class="login_title">系统登录</h3>
       <el-form-item>
@@ -27,16 +28,12 @@
     data() {
       return {
         loginForm: {
-          username: '',
-          password: ''
+          username: 'admin',
+          password: '12345'
         },
         responseResult: []
       }
     },
-//点击登录按钮，向后端发送数据
-//受到后端返回的成功代码时，触发 store 中的 login() 方法，把 loginForm 对象传递给 store 中的 user 对象
-//（*这里只是简单的实现，在后端我们可以通过用户名和密码查询数据库，获得 user 表的完整信息，比如用户昵称、用户级别等，返回前端，并传递给 user 对象，以实现更复杂的功能）
-//获取登录前页面的路径并跳转，如果该路径不存在，则跳转到首页
     methods: {
       login() {
         var _this = this
@@ -51,6 +48,9 @@
               _this.$store.commit('login', _this.loginForm)
               var path = this.$route.query.redirect
               this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
+            }
+            else{
+
             }
           })
           .catch(failResponse => {

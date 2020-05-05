@@ -1,9 +1,10 @@
 <template>
   <div class="list">
+    <el-card>
     <div class="title">
       <h1>活动申请</h1>
     </div>
-    <h3 style="">如何报名</h3>
+    <h3 style="margin-top:15px">如何报名</h3>
     <div class="step">
       <el-steps :active="4" align-center>
         <el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>
@@ -12,7 +13,11 @@
         <el-step title="步骤4" description="这是一段很长很长很长的描述性文字"></el-step>
       </el-steps>
     </div>
+        </el-card>
     <div>
+      <el-card>
+        <b>近期活动信息</b>
+      </el-card>
       <el-table
         :data="lists"
         border
@@ -22,7 +27,7 @@
           fixed
           prop="activityName"
           label="活动名"
-          width="150">
+          width="110">
         </el-table-column>
         <el-table-column
           prop="type"
@@ -47,14 +52,14 @@
         <el-table-column
           prop="details"
           label="活动内容"
-          width="300">
+          width="280">
         </el-table-column>
         <el-table-column
           fixed="right"
           label="操作"
-          width="100">
+          width="50">
           <template>
-            <el-button  type="success" @click="dialogFormVisible = true">申请</el-button>
+            <b  type="success" @click="dialogFormVisible = true">申请</b>
           </template>
         </el-table-column>
       </el-table>
@@ -83,9 +88,9 @@
       this.loadLists()
     },
     computed: {
-      tableHeight() {
-        return window.innerHeight - 320
-      }
+      // tableHeight() {
+      //   return window.innerHeight - 320
+      // }
     },
     methods: {
       handleClose() {
@@ -137,6 +142,7 @@
 <style scoped>
   .step {
     margin-bottom: 15px;
+    margin-top:15px
   }
   .list {
     width: 900px;

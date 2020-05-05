@@ -58,13 +58,26 @@
           fixed="right"
           label="操作"
           width="100">
-          <i class="el-icon-delete" @click="deleteCat(lists.id)"></i>
+          <!-- <i class="el-icon-delete" @click="deleteCat(lists.id)"></i>
           <el-button
             @click.native.prevent="deleteRow(scope.$index, lists)"
             type="text"
             size="small">
             移除
-          </el-button>
+          </el-button> -->
+          <template slot-scope="scope">
+                        <el-button
+                            type="text"
+                            icon="el-icon-edit"
+                            @click="handleEdit(scope.$index, scope.row)"
+                        >编辑</el-button>
+                        <el-button
+                            type="text"
+                            icon="el-icon-delete"
+                            class="red"
+                            @click="handleDelete(scope.$index, scope.row)"
+                        >删除</el-button>
+                    </template>
         </el-table-column>
       </el-table>
       <div style="margin-top: 20px">
@@ -158,6 +171,23 @@
           // conditional: item.conditional,
         }
       },
+
+        delAllSelection() {
+            const length = this.multipleSelection.length;
+            let str = '';
+            this.delList = this.delList.concat(this.multipleSelection);
+            for (let i = 0; i < length; i++) {
+                str += this.multipleSelection[i].name + ' ';
+            }
+            this.$message.error(`删除了${str}`);
+            this.multipleSelection = [];
+        },
+        // 编辑操作
+        handleEdit(index, row) {
+            this.idx = index;
+            this.form = row;
+            this.editVisible = true;
+        },
       loadLists() {
         var _this = this
         this.$axios.get('/activity/list').then(resp => {

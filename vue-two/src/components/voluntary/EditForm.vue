@@ -6,7 +6,7 @@
       :visible.sync="dialogFormVisible"
       :before-close="openDialog"
       @close="clear">
-      <el-form v-model="form" style="text-align: left" ref="form">
+      <el-form :model="form"  style="text-align: left" ref="form">
         <el-form-item label="活动名" :label-width="formLabelWidth" prop="activityName">
           <el-input v-model="form.activityName" autocomplete="off" placeholder=""></el-input>
         </el-form-item>
@@ -31,7 +31,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="onSubmit('from')">确 定</el-button>
+        <el-button type="primary" @click="onSubmit">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -105,7 +105,8 @@
             // conditional: this.from.conditional,
           }).then(resp => {
           if (resp && resp.status === 200) {
-            this.dialogFormVisible = false
+            this.dialogFormVisible = false;
+            this.$message.success('修改成功');
             this.$emit('onSubmit')
           }
         })

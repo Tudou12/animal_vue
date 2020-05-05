@@ -5,11 +5,11 @@ import Router from 'vue-router';
 import SearchBar from '@/components/common/SearchBar';
 import Home from '@/components/home/Home';
 import Voluntary from '@/components/voluntary/Voluntary';
-import Donation from '@/components/donation/Donation';
+import DonateHome from '@/components/donations/DonateHome';
 
 import Adopt from '@/components/adopt/Adopt';
-import AdoptManage from '@/components/adopt/AdoptManage';
-import ApplyList from '@/components/adopt/ApplyList';
+// import AdoptManage from '@/components/adopt/AdoptManage';
+// import ApplyList from '@/components/adopt/ApplyList';
 import Cat from '@/components/adopt/Cat';
 
 import Taobao from '@/components/Taobao';
@@ -23,6 +23,12 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path: '/',
+      name: 'Default',
+      redirect: '/home',
+      component: Home
+    },
+    {
       path: '/Home',
       name: 'Home',
       component: Home,
@@ -30,11 +36,8 @@ export default new Router({
       children: [
         {
           path: '/index',
-          name: 'SearchBar',
-          component: SearchBar,
-          meta: {
-            requireAuth: true
-          },
+          name: 'Home',
+          component: () => import('../components/home/Home.vue')
         }
         // {
         //   path: '/voluntary',
@@ -66,15 +69,16 @@ export default new Router({
       name: 'Adopt',
       component: Adopt,
     },
-    {
-      path: '/AdoptManage',
-      name: 'AdoptManage',
-      component: AdoptManage,
-    }, {
-      path: '/ApplyList',
-      name: 'ApplyList',
-      component: ApplyList,
-    },
+    // {
+    //   path: '/AdoptManage',
+    //   name: 'AdoptManage',
+    //   component: AdoptManage,
+    // },
+    // {
+    //   path: '/ApplyList',
+    //   name: 'ApplyList',
+    //   component: ApplyList,
+    // },
     {
       path: '/Cat',
       name: 'Cat',
@@ -86,9 +90,9 @@ export default new Router({
       component: Taobao,
     },
     {
-      path: '/Donation',
-      name: 'Donation',
-      component: Donation,
+      path: '/DonateHome',
+      name: 'DonateHome',
+      component: DonateHome,
     },
   ]
 });
