@@ -4,18 +4,18 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import SearchBar from '@/components/common/SearchBar';
 import Home from '@/components/home/Home';
-import Voluntary from '@/components/voluntary/Voluntary';
-import DonateHome from '@/components/donations/DonateHome';
+// import Voluntary from '@/components/voluntary/Voluntary';
+// import DonateHome from '@/components/donations/DonateHome';
 
-import Adopt from '@/components/adopt/Adopt';
+// import Adopt from '@/components/adopt/Adopt';
 // import AdoptManage from '@/components/adopt/AdoptManage';
 // import ApplyList from '@/components/adopt/ApplyList';
 import Cat from '@/components/adopt/Cat';
 
 import Taobao from '@/components/Taobao';
 
-import Login from '@/components/logReg/Login';
-import Register from '@/components/logReg/Register';
+// import Login from '@/components/logReg/Login';
+// import Register from '@/components/logReg/Register';
 
 Vue.use(Router);
 
@@ -37,7 +37,7 @@ export default new Router({
         {
           path: '/index',
           name: 'Home',
-          component: () => import('../components/home/Home.vue')
+          component: () => import('../components/home/Home')
         }
         // {
         //   path: '/voluntary',
@@ -50,49 +50,50 @@ export default new Router({
       ]
     },
     {
-      path: '/Login',
+      path: '/login',
       name: 'Login',
-      component: Login
+      component: () => import('../components/logReg/Login')
     },
     {
-      path: '/Register',
+      path: '/register',
       name: 'Register',
-      component: Register
+      component: () => import('../components/logReg/Register')
     },
     {
       path: '/Voluntary',
       name: 'Voluntary',
-      component: Voluntary,
+      component:() => import('../components/voluntary/Voluntary')
     },
     {
       path: '/Adopt',
       name: 'Adopt',
-      component: Adopt,
+      component: () => import('../components/adopt/Adopt'),
     },
-    // {
-    //   path: '/AdoptManage',
-    //   name: 'AdoptManage',
-    //   component: AdoptManage,
-    // },
-    // {
-    //   path: '/ApplyList',
-    //   name: 'ApplyList',
-    //   component: ApplyList,
-    // },
+    {
+      path: '/AdoptManage',
+      name: 'AdoptManage',
+      component: () => import('../components/my/manage/AdoptManage'),
+     },
+    {
+      path: '/ActivityManage',
+      name: 'ActivityManage',
+      component: () => import('../components/my/manage/ActivityManage'),
+    },
     {
       path: '/Cat',
       name: 'Cat',
-      component: Cat,
+      component: () => import('../components/adopt/Cat'),
     },
     {
       path: '/Taobao',
       name: 'Taobao',
-      component: Taobao,
+      component: () => import('../components/Taobao'),
     },
+
     {
       path: '/DonateHome',
       name: 'DonateHome',
-      component: DonateHome,
+      component: () => import('../components/donations/DonateHome'),
     },
   ]
 });

@@ -24,12 +24,12 @@
           <el-form-item label="活动类型" prop="type">
             <el-input v-model="ruleForm.type" placeholder="请填写活动类型"></el-input>
           </el-form-item>
-          <el-form-item label="活动时间" prop="activityTime">
+          <!-- <el-form-item label="活动时间" prop="activityTime">
             <el-input v-model="ruleForm.activityTime" placeholder="请选择活动时间以2020-xx-xx的格式">
-            </el-input>
+            </el-input> -->
           </el-form-item>
-          <el-form-item label="联系方式" prop="contact">
-            <el-input v-model="ruleForm.contact"></el-input>
+          <el-form-item label="联系方式" prop="phone">
+            <el-input v-model="ruleForm.phone"></el-input>
           </el-form-item>
           <el-form-item label="报名原因" prop="details">
             <el-input type="textarea" v-model="ruleForm.details"></el-input>
@@ -59,9 +59,9 @@
           age: '',
           sex: '',
           type: '',
-          activityTime: '',
+          // activityTime: '',
           details: '',
-          contact: '',
+          phone: '',
           activityName: '',
         },
         rules: {
@@ -104,9 +104,9 @@
             age: this.ruleForm.age,
             sex: this.ruleForm.sex,
             type: this.ruleForm.type,
-            activityTime: this.ruleForm.activityTime,
+            // activityTime: this.ruleForm.activityTime,
             desc: this.ruleForm.desc,
-            contact: this.ruleForm.contact,
+            phone: this.ruleForm.phone,
 
           }).then(resp => {
           if (resp && resp.status === 200) {

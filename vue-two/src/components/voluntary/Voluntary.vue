@@ -45,11 +45,10 @@
   import Activity from './Activity';
   import HisActivity from './HisActivity';
   import ActivityList from './ActivityList';
-  import ActivityManage from './ActivityManage'
 
   export default {
     name: 'Voluntary',
-    components: {NavMenu, SideMenu, VolIntroduce, Activity, HisActivity, ActivityList, ActivityManage,Footer},
+    components: {NavMenu, SideMenu, VolIntroduce, Activity, HisActivity, ActivityList,Footer},
     data() {
       return {
         imgs: [

@@ -11,14 +11,16 @@
       <el-collapse accordion>
         <el-collapse-item>
           <template slot="title">
-            我的发布
+            管理发布信息
             <i class="header-icon el-icon-info"></i>
           </template>
-          <div></div>
+          <div><a href="AdoptManage">领养</a></div>
+          <div><a href="ActivityManage">志愿者活动</a></div>
+          <div>物资捐赠</div>
         </el-collapse-item>
         <el-collapse-item>
         <template slot="title">
-            我的申请
+            查看申请信息
             <i class="header-icon el-icon-info"></i>
           </template>
           <div>领养申请</div>
@@ -30,7 +32,9 @@
         </el-collapse-item>
       </el-collapse>
       <!-- <a> 退出登录</a> -->
-      <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
+      <el-collapse-item >
+      <el-dropdown-item divided @command="handleCommand">退出登录</el-dropdown-item>
+      </el-collapse-item>
     </div>
     </el-drawer>
   </div>
@@ -40,14 +44,19 @@
 import NavMenu from "../common/NavMenu";
 
 export default {
-  name: "MyHome",
+  name: "AdminHome",
   components: { NavMenu },
   data() {
     return {
       drawer: false
     };
   },
-  methods: {}
+  methods: {
+        handleCommand() {
+                localStorage.removeItem('ms_username');
+                this.$router.push('/login');
+        },
+  }
 };
 </script>
 

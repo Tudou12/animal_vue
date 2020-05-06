@@ -10,22 +10,17 @@
     >
       <!-- style="min-width: 100%;position: relative;margin-top: 0px" -->
       <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">{{ item.navItem }}</el-menu-item>
-      <span
-        style="position: absolute;
-      padding-top: 10px;
-      right: 43%;
-      font-size: 25px;
-      font-weight: bold;
-      color:#FFFFFF"
-      >流浪动物社区</span>
+      <span style="position: absolute;padding-top: 10px;right: 43%; font-size: 25px; font-weight: bold; color:#FFFFFF">流浪动物社区</span>
       <div class="right">
-        <a href="Login" style="color: #FFFFFF;float: right;padding: 15px;">登录</a>
+        <!-- <a href="Login" style="color: #FFFFFF;float: right;padding: 15px;">登录</a> -->
+       <my-home style="color: #FFFFFF;float: right;padding: 20px;">我的</my-home>
+       <admin-home style="color: #FFFFFF;float: right;padding: 20px;">我的</admin-home>
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
-          <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
-        {{ item.navItem }}
-      </el-menu-item>
           <el-dropdown-menu slot="dropdown">
-            <my-home style="color: #FFFFFF;float: right;padding: 5px;">我的</my-home>
+            <span class="el-dropdown-link">
+            {{username}}
+            <i class="el-icon-caret-bottom"></i>
+            </span>
             <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -36,9 +31,11 @@
 
 <script>
 import MyHome from "../my/MyHome";
+import AdminHome from "../my/AdminHome";
+
 export default {
   name: "NavMenu",
-  components: { MyHome },
+  components: { MyHome,AdminHome },
   data() {
     return {
       navList: [
@@ -52,8 +49,13 @@ export default {
     };
   },
   mounted: {
+
   },
   computed: {
+    username() {
+            let username = localStorage.getItem('ms_username');
+            return username ? username : this.name;
+        },
     hoverBackground() {
       return "#ffd04b";
     },

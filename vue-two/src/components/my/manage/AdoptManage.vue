@@ -2,7 +2,7 @@
   <div>
     <router-view/>
     <nav-menu></nav-menu>
-    <a href="Adopt" style="float:left;color:black">返回领养首页</a>
+    <!-- <a href="Adopt" style="float:left;color:black">返回领养首页</a> -->
     <div class="body">
       <el-card class="box-card">
         <el-card>
@@ -46,9 +46,9 @@
   </div>
 </template>
 <script>
-  import AdoptForm from "../adopt/AddForm";
-  import NavMenu from "../common/NavMenu";
-  import EditForm from "../adopt/EditForm";
+  import AdoptForm from "../../adopt/AddForm";
+  import NavMenu from "../../common/NavMenu";
+  import EditForm from "../../adopt/EditForm";
 
   export default {
     name: "AdoptManage",

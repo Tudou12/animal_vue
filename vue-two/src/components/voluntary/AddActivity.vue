@@ -79,22 +79,21 @@
           releaseTime: '',
           details: '',
           peopleNumber: '',
-          // conditional: ''
         }
       },
       openDialog(flag) {
         this.displayAlter = flag;
         this.loadLists();
-        // this.$nextTick(()=>{
-        //      this.form.id=id;
-        //      this.form.activityName=activityName;
-        //      this.form.type= type;
-        //      this.form.address= address;
-        //      this.form.applyTime= applyTime;
-        //      this.form.activityTime= activityTime;
-        //      this.form.releaseTime= releaseTime;
-        //      this.form.details= details;
-        // })
+        this.$nextTick(()=>{
+             this.form.id=id;
+             this.form.activityName=activityName;
+             this.form.type= type;
+             this.form.address= address;
+             this.form.applyTime= applyTime;
+             this.form.activityTime= activityTime;
+             this.form.releaseTime= releaseTime;
+             this.form.details= details;
+        })
       },
       onSubmit() {
         this.$axios.post('/activity/add', {
@@ -106,12 +105,13 @@
           activityTime: this.form.activityTime,
           releaseTime: this.form.releaseTime,
           details: this.form.details,
-          peopleNumber: this.from.peopleNumber,
+          peopleNumber: this.form.peopleNumber,
           // conditional: this.from.conditional,
         }).then(resp => {
           if (resp && resp.status === 200) {
             this.dialogFormVisible = false
             this.$emit('onSubmit')
+            this.loadLists();
           }
         })
       },

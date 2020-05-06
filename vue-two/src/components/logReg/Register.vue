@@ -1,15 +1,8 @@
 <template>
-  <div id="from_body">
-    <!-- <img src="../../assets/image/top.jpg" style="width：80%" /> -->
-    <div id="from">
-      <div id="re_from">
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="ruleForm2"
-          :rules="rules2"
-        >
-          <div id="from_top">
+  <body id="paper">
+  <el-form :model="loginForm" :rules="rules" class="login-container" label-position="left"
+           label-width="0px" v-loading="loading">
+    <div id="from_top">
             <h2>注册表</h2>
           </div>
           <el-form-item label="姓名">
@@ -44,96 +37,99 @@
                 style="background: #505458;border: none"
                 @click="resetForm('ruleForm2')"
               >重置</el-button>
-              <el-button
+              <!-- <el-button
                 type="primary"
                 style="background: #505458;border: none"
                 @click="submitForm('ruleForm2')"
-              >注册</el-button>
+              >注册</el-button> -->
+              <el-button
+              type="primary"
+               style="width: 40%;background: #505458;border: none"
+               v-on:click="register"
+               >注册</el-button>
+
             </el-form-item>
           </div>
         </el-form>
-      </div>
-    </div>
-  </div>
+  </body>
 </template>
-
 <script>
-export default {
-  name: "Register",
-  data() {
-    var validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请输入密码"));
-      } else {
-        if (this.ruleForm2.checkPass !== "") {
-          this.$refs.ruleForm2.validateField("checkPass");
-        }
-        callback();
+  export default{
+    name:"Register",
+    data () {
+      return {
+        rules: {
+          username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
+          password: [{required: true, message: '密码不能为空', trigger: 'blur'}]
+        },
+        checked: true,
+        loginForm: {
+          username: '',
+          password: '',
+          name: '',
+          phone: '',
+          email: ''
+        },
+        loading: false
       }
-    };
-    var validatePass2 = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请再次输入密码"));
-      } else if (value !== this.ruleForm2.pass) {
-        callback(new Error("两次输入密码不一致!"));
-      } else {
-        callback();
-      }
-    };
-    return {
-      labelPosition: "top",
-      ruleForm2: {
-        name: "",
-        sex: "",
-        age: "",
-        pass: "",
-        checkPass: ""
-      },
-      rules2: {
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }]
-      }
-    };
-  },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          alert("submit!");
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
     },
-    gologin() {
-      this.$router.push("/Login");
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    methods: {
+      register () {
+        var _this = this
+        this.$axios
+          .post('/register', {
+            username: this.loginForm.username,
+            password: this.loginForm.password,
+            name: this.loginForm.name,
+            phone: this.loginForm.phone,
+            email: this.loginForm.email
+          })
+          .then(resp => {
+            if (resp.data.code === 200) {
+              this.$alert('注册成功', '提示', {
+                confirmButtonText: '确定'
+              })
+              _this.$router.replace('/login')
+            } else {
+              this.$alert(resp.data.message, '提示', {
+                confirmButtonText: '确定'
+              })
+            }
+          })
+          .catch(failResponse => {})
+      }
     }
   }
-};
 </script>
 <style>
-*{
-     margin: 0px;
-}
-#from_body {
-   background-color: darkseagreen;
-   width: 100%;
-   height: 900%;
-}
-
-#re_from{
-  border-radius: 15px;
-  background-clip: padding-box;
-  margin:90px auto;
-  width: 350px;
-  padding: 35px 35px 15px 35px;
-  background: #fff;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 0 25px #cac6c6;
-}
+  #paper {
+    /* background:url("../assets/img/bg/eva1.jpg") no-repeat; */
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    position: fixed;
+  }
+  body{
+    margin: -5px 0px;
+  }
+  .login-container {
+    border-radius: 15px;
+    background-clip: padding-box;
+    margin: 90px auto;
+    width: 350px;
+    padding: 35px 35px 15px 35px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
+  }
+  .login_title {
+    margin: 0px auto 40px auto;
+    text-align: center;
+    color: #505458;
+  }
+  .login_remember {
+    margin: 0px 0px 35px 0px;
+    text-align: left;
+  }
 </style>
-

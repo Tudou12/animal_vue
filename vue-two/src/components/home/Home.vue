@@ -10,7 +10,7 @@
         <div class="Step">
           <Step id="Step"></Step>
         </div>
-        <router-view />
+        <search-bar/>
         <div class="dog">
           <dog id="dog"></dog>
         </div>
@@ -18,7 +18,7 @@
           <cat id="cat"></cat>
         </div>
       </div>
-      <el-row></el-row>
+      <!-- <el-row></el-row> -->
     </div>
     <footer></footer>
   </div>
@@ -30,9 +30,10 @@ import Step from "../home/Step";
 import Cat from "../home/Cat";
 import News from "../home/News";
 import Footer from "../common/Footer";
+import SearchBar from "../common/SearchBar"
 export default {
   name: "Home",
-  components: { NavMenu, Dog, Cat, News, Step, Footer },
+  components: { NavMenu, Dog, Cat, News, Step, Footer, SearchBar},
   data() {
     return {};
   },
