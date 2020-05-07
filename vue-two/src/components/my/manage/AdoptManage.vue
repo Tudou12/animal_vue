@@ -4,6 +4,7 @@
     <nav-menu></nav-menu>
     <!-- <a href="Adopt" style="float:left;color:black">返回领养首页</a> -->
     <div class="body">
+     <edit-form @onSubmit="loadCats()"  ref="edit"></edit-form>
       <el-card class="box-card">
         <el-card>
           <adopt-form @onSubmit="loadCats()" ref="edit"></adopt-form>
@@ -13,7 +14,7 @@
             effect="dark"
             placement="right"
             v-for="item in cats.slice((currentPage-1)*pagesize,currentPage*pagesize)"
-            :key="item.ID"
+            :key="item.id"
           >
             <p slot="content" style="font-size: 14px;margin-bottom: 6px;">名字：{{item.animalName}}</p>
             <p slot="content" style="font-size: 13px;margin-bottom: 6px">动物编号：{{item.animalNo}}</p>
@@ -36,8 +37,11 @@
               <div class="type">
                 动物品种：{{item.animalType}}
               </div>
-              <edit-form @onSubmit="loadCats()" class="edit" ref="edit"></edit-form>
-              <i class="el-icon-delete" size="big" @click="deleteCat(item.id)"></i>
+              <div class="type">
+                动物品种：{{item.id}}
+              </div>
+              <el-button icon="el-icon-edit" size="big" @click="editAdopt(item)"></el-button>
+              <el-button icon="el-icon-delete" size="big" @click="deleteCat(item.id)"></el-button>
             </el-card>
           </el-tooltip>
         </el-row>
@@ -107,10 +111,10 @@
           });
         // alert(id)
       },
-      adoptCat(item) {
+      editAdopt(item) {
         this.$refs.edit.dialogFormVisible = true;
         this.$refs.edit.form = {
-          Id: item.ID,
+          Id: item.id,
           animalName: item.animalName,
           animalType: item.animalType,
           animalNo: item.animalNo,

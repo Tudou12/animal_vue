@@ -15,6 +15,7 @@
         <!-- <a href="Login" style="color: #FFFFFF;float: right;padding: 15px;">登录</a> -->
        <my-home style="color: #FFFFFF;float: right;padding: 20px;">我的</my-home>
        <admin-home style="color: #FFFFFF;float: right;padding: 20px;">我的</admin-home>
+       <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 40px;color: #222;padding: 10px"></i>
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <el-dropdown-menu slot="dropdown">
             <span class="el-dropdown-link">
@@ -49,7 +50,16 @@ export default {
     };
   },
   mounted: {
-
+    logout () {
+        var _this = this
+        this.$axios.get('/logout').then(resp => {
+          if (resp.data.code === 200) {
+            // 前后端状态保持一致
+            _this.$store.commit('logout')
+            _this.$router.replace('/login')
+          }
+        })
+      }
   },
   computed: {
     username() {
@@ -89,4 +99,8 @@ span {
   height: 100%;
   width: 100%;
 }
+.el-icon-switch-button {
+    cursor: pointer;
+    outline:0;
+  }
 </style>

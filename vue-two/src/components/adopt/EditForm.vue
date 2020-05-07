@@ -1,12 +1,11 @@
 <template>
   <div>
-    <i class="el-icon-edit" @click="dialogFormVisible = true"></i>
+    <el-button @click="dialogFormVisible = true;"></el-button>
     <el-dialog
       title="修改可领养动物表"
       :visible.sync="dialogFormVisible"
       @close="clear">
-      <el-form v-model="form" style="text-align: left"
-               ref="dataForm">
+      <el-form v-model="form" style="text-align: left" ref="dataForm">
         <el-form-item label="名字" :label-width="formLabelWidth" prop="animalName">
           <el-input v-model="form.animalName" autocomplete="off"></el-input>
         </el-form-item>
@@ -102,9 +101,9 @@
           category: ''
         }
       },
-      onSubmit(id) {
+      onSubmit() {
         this.$axios
-          .post('/strays', {
+          .post('/adopter/add', {
             id: this.form.id,
             animalName: this.form.animalName,
             animalType: this.form.animalType,
@@ -123,27 +122,7 @@
           }
         })
       },
-      deleteCat(id) {
-        this.$confirm("此操作将永久删除该动物信息, 是否继续?", "提示", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "warning"
-        })
-          .then(() => {
-            this.$axios.post("/strays/delete", {id: id}).then(resp => {
-              if (resp && resp.status === 200) {
-                this.loadCats();
-              }
-            });
-          })
-          .catch(() => {
-            this.$message({
-              type: "info",
-              message: "已取消删除"
-            });
-          });
-        // alert(id)
-      },
+
       uploadImg() {
         this.form.animalImages = this.$refs.imgUpload.url
       }

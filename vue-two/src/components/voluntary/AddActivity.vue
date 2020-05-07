@@ -83,7 +83,6 @@
       },
       openDialog(flag) {
         this.displayAlter = flag;
-        this.loadLists();
         this.$nextTick(()=>{
              this.form.id=id;
              this.form.activityName=activityName;
@@ -108,11 +107,11 @@
           peopleNumber: this.form.peopleNumber,
           // conditional: this.from.conditional,
         }).then(resp => {
-          if (resp && resp.status === 200) {
+          // if (resp && resp.status === 200) {
             this.dialogFormVisible = false
             this.$emit('onSubmit')
             this.loadLists();
-          }
+          // }
         })
       },
     }

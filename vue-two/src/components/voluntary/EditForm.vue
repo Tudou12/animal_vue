@@ -1,10 +1,9 @@
 <template>
   <div style="text-align: left">
-    <el-button class="add-button" type="success" @click="dialogFormVisible = true">修改</el-button>
+    <el-button type="text"  @click="dialogFormVisible = true;" ></el-button>
     <el-dialog
-      title="添加/修改图书"
+      title="添加/修改志愿者活动"
       :visible.sync="dialogFormVisible"
-      :before-close="openDialog"
       @close="clear">
       <el-form :model="form"  style="text-align: left" ref="form">
         <el-form-item label="活动名" :label-width="formLabelWidth" prop="activityName">
@@ -16,12 +15,18 @@
         <el-form-item label="活动地址" :label-width="formLabelWidth" prop="address">
           <el-input v-model="form.address" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item label="活动发布时间" :label-width="formLabelWidth" prop="applyTime">
+          <el-input v-model="form.applyTime" autocomplete="off"></el-input>
+        </el-form-item>
         <el-form-item label="活动时间" :label-width="formLabelWidth" prop="activityTime">
           <el-input v-model="form.activityTime" autocomplete="off"></el-input>
         </el-form-item>
-        <!-- <el-form-item label="人数" :label-width="formLabelWidth" prop="peopleNumber">
+        <el-form-item label="报名结束时间" :label-width="formLabelWidth" prop="endTime">
+          <el-input v-model="form.endTime" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="人数" :label-width="formLabelWidth" prop="peopleNumber">
           <el-input v-model="form.peopleNumber" autocomplete="off" placeholder=""></el-input>
-        </el-form-item> -->
+        </el-form-item>
         <el-form-item label="活动内容" :label-width="formLabelWidth" prop="details">
           <el-input type="textarea" v-model="form.details" autocomplete="off"></el-input>
         </el-form-item>
@@ -50,17 +55,13 @@
           address: '',
           applyTime: '',
           activityTime: '',
-          releaseTime: '',
+          endTime: '',
           details: '',
           peopleNumber: '',
-          conditional: '',
         },
         formLabelWidth: '120px'
       }
     },
-    // mounted(){
-    //   this.loadLists();
-    // },
     methods: {
       clear() {
         this.form = {
@@ -70,28 +71,13 @@
           address: '',
           applyTime: '',
           activityTime: '',
-          releaseTime: '',
+          endTime: '',
           details: '',
-          // peopleNumber: '',
-          // conditional: ''
+          peopleNumber: '',
         }
       },
-      openDialog(flag) {
-        this.displayAlter = flag;
-        this.loadLists();
-        this.$nextTick(() => {
-          this.form.id = id;
-          this.form.activityName = activityName;
-          this.form.type = type;
-          this.form.address = address;
-          this.form.applyTime = applyTime;
-          this.form.activityTime = activityTime;
-          this.form.releaseTime = releaseTime;
-          this.form.details = details;
-        })
-      },
       onSubmit() {
-        this.$axios["form"]
+        this.$axios
           .post('/activity/add', {
             id: this.form.id,
             activityName: this.form.activityName,
@@ -99,10 +85,9 @@
             address: this.form.address,
             applyTime: this.form.applyTime,
             activityTime: this.form.activityTime,
-            releaseTime: this.form.releaseTime,
+            endTime: this.form.endTime,
             details: this.form.details,
-            // peopleNumber: this.from.peopleNumber,
-            // conditional: this.from.conditional,
+            peopleNumber: this.form.peopleNumber,
           }).then(resp => {
           if (resp && resp.status === 200) {
             this.dialogFormVisible = false;
