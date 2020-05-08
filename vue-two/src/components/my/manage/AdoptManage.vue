@@ -4,10 +4,10 @@
     <nav-menu></nav-menu>
     <!-- <a href="Adopt" style="float:left;color:black">返回领养首页</a> -->
     <div class="body">
-     <edit-form @onSubmit="loadCats()"  ref="edit"></edit-form>
       <el-card class="box-card">
         <el-card>
-          <adopt-form @onSubmit="loadCats()" ref="edit"></adopt-form>
+          <edit-form @onSubmit="loadCats()" ref="edit"></edit-form>
+          <adopt-form @onSubmit="loadCats()" ref="add"></adopt-form>
         </el-card>
         <el-row style="height: 840px;">
           <el-tooltip
@@ -70,7 +70,7 @@
     methods: {
       loadCats() {
         var _this = this;
-        this.$axios.get("/strays").then(resp => {
+        this.$axios.get("/strays/list").then(resp => {
           if (resp && resp.status === 200) {
             _this.cats = resp.data;
           }
@@ -114,7 +114,7 @@
       editAdopt(item) {
         this.$refs.edit.dialogFormVisible = true;
         this.$refs.edit.form = {
-          Id: item.id,
+          id: item.id,
           animalName: item.animalName,
           animalType: item.animalType,
           animalNo: item.animalNo,

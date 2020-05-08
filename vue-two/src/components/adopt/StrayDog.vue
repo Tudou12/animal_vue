@@ -43,33 +43,33 @@
     methods: {
       loadDogs() {
         var _this = this
-        this.$axios.get('/strays').then(resp => {
+        this.$axios.get('/strays/list').then(resp => {
           if (resp && resp.status === 200) {
             _this.dogs = resp.data
           }
         })
       },
-      deletedog(id) {
-        this.$confirm('此操作将永久删除该动物信息, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-            this.$axios
-              .post('/delete', {id: id}).then(resp => {
-              if (resp && resp.status === 200) {
-                this.loaddogs()
-              }
-            })
-          }
-        ).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
-        })
-        // alert(id)
-      },
+      // deletedog(id) {
+      //   this.$confirm('此操作将永久删除该动物信息, 是否继续?', '提示', {
+      //     confirmButtonText: '确定',
+      //     cancelButtonText: '取消',
+      //     type: 'warning'
+      //   }).then(() => {
+      //       this.$axios
+      //         .post('/delete', {id: id}).then(resp => {
+      //         if (resp && resp.status === 200) {
+      //           this.loaddogs()
+      //         }
+      //       })
+      //     }
+      //   ).catch(() => {
+      //     this.$message({
+      //       type: 'info',
+      //       message: '已取消删除'
+      //     })
+      //   })
+      //   // alert(id)
+      // },
       adoptDog(item) {
         this.$refs.edit.dialogFormVisible = true
         this.$refs.edit.form = {

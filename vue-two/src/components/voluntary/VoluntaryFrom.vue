@@ -1,6 +1,7 @@
 <template>
   <div id="Home">
     <div id="body">
+      <el-button @click="dialogFormVisible=true;"></el-button>
      <el-dialog title="志愿者申请表"
                  :visible.sync="dialogFormVisible"
                  @close="handleClose"
@@ -27,7 +28,7 @@
           <!-- <el-form-item label="活动时间" prop="activityTime">
             <el-input v-model="ruleForm.activityTime" placeholder="请选择活动时间以2020-xx-xx的格式">
             </el-input> -->
-          </el-form-item>
+          <!-- </el-form-item> -->
           <el-form-item label="联系方式" prop="phone">
             <el-input v-model="ruleForm.phone"></el-input>
           </el-form-item>
@@ -54,7 +55,7 @@
       return {
         // activeIndex2:'1',
         ruleForm: {
-          id: '',
+          activityId: '',
           name: '',
           age: '',
           sex: '',
@@ -88,7 +89,7 @@
           {url: require('../../assets/image/8.jpg'), link: '/content1'},
           {url: require('../../assets/image/7.jpg'), link: '/content1'},
         ],
-        dialogFormVisible: true,
+        dialogFormVisible: false,
       }
     },
     methods: {
@@ -99,7 +100,7 @@
       submitForm(ruleForm) {
         this.$axios
           .post('/voluntary/add', {
-            id: this.ruleForm.id,
+            activityId: this.ruleForm.id,
             name: this.ruleForm.name,
             age: this.ruleForm.age,
             sex: this.ruleForm.sex,

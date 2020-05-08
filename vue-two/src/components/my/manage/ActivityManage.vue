@@ -5,7 +5,7 @@
       <h1>活动管理</h1>
     </div>
     <div class="activity">
-    <edit-form @onSubmit="loadLsits()"  ref="edit"></edit-form>
+    <edit-form  ref="edit"></edit-form>
       <el-card>
       <add-activity></add-activity>
       <el-button

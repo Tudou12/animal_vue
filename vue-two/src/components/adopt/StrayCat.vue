@@ -53,7 +53,7 @@
     methods: {
       loadCats() {
         var _this = this
-        this.$axios.get('/strays').then(resp => {
+        this.$axios.get('/strays/list').then(resp => {
           if (resp && resp.status === 200) {
             _this.cats = resp.data
           }

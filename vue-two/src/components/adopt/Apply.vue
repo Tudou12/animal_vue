@@ -58,14 +58,13 @@
       return {
         dialogFormVisible: false,
         form: {
-          id: '',
           name: '',
           age: '',
           sex: '',
           idCar: '',
           adress: '',
           animalId: '',
-          adopted: '',
+          adopted: '1',
           adressImage: '',
           phone: ''
         },
@@ -100,14 +99,13 @@
       clear() {
         this.$refs.imgUpload.clear()
         this.form = {
-          id: '',
           name: '',
           age: '',
           sex: '',
           idCar: '',
           adress: '',
           animalId: '',
-          adopted: '',
+          adopted: '1',
           adressImage: '',
           phone: ''
         }
@@ -115,13 +113,12 @@
       onSubmit() {
         this.$axios
           .post('/adopter/add', {
-            id: this.form.id,
             name: this.form.name,
             age: this.form.age,
             sex: this.form.sex,
             idCar: this.form.idCar,
             adress: this.form.adress,
-            animalId: this.form.animalId,
+            animalId: this.form.id,
             adopted: this.form.adopted,
             adressImage: this.form.adressImage,
             phone: this.form.phone,

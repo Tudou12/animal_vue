@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button @click="dialogFormVisible = true;"></el-button>
+    <i @click="dialogFormVisible = true;"></i>
     <el-dialog
       title="修改可领养动物表"
       :visible.sync="dialogFormVisible"
@@ -103,7 +103,7 @@
       },
       onSubmit() {
         this.$axios
-          .post('/adopter/add', {
+          .post('/strays/add', {
             id: this.form.id,
             animalName: this.form.animalName,
             animalType: this.form.animalType,

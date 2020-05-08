@@ -12,7 +12,7 @@
             effect="dark"
             placement="right"
             v-for="item in cats.slice((currentPage-1)*pagesize,currentPage*pagesize)"
-            :key="item.ID"
+            :key="item.id"
           >
             <p slot="content" style="font-size: 14px;margin-bottom: 6px;">名字：{{item.animalName}}</p>
             <p slot="content" style="font-size: 13px;margin-bottom: 6px">动物编号：{{item.animalNo}}</p>
@@ -63,7 +63,7 @@
     methods: {
       loadCats() {
         var _this = this;
-        this.$axios.get("/strays").then(resp => {
+        this.$axios.get("/strays/list").then(resp => {
           if (resp && resp.status === 200) {
             _this.cats = resp.data;
           }
@@ -72,7 +72,7 @@
       adoptCat(item) {
         this.$refs.edit.dialogFormVisible = true;
         this.$refs.edit.form = {
-          Id: item.ID,
+          id: item.id,
           animalName: item.animalName,
           animalType: item.animalType,
           animalNo: item.animalNo,

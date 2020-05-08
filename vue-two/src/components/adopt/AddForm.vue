@@ -104,7 +104,7 @@
       },
       onSubmit() {
         this.$axios
-          .post('/strays', {
+          .post('/strays/add', {
             id: this.form.id,
             animalName: this.form.animalName,
             animalType: this.form.animalType,

@@ -58,30 +58,29 @@
           fixed="right"
           label="操作"
           width="50">
-          <template>
-            <b  type="success" @click="dialogFormVisible = true">申请</b>
+          <template slot-scope="scope">
+            <el-button type="text" @click.native.prevent="voluntary_form(scope.row)">申请</el-button>
           </template>
         </el-table-column>
       </el-table>
-      <voluntary-from v-if="dialogFormVisible" @close="handleClose"/>
+      <voluntary-from ref="voluntary_form"/>
     </div>
   </div>
 
 </template>
 
 <script>
-  import EditForm from './EditForm';
   import VoluntaryFrom from './VoluntaryFrom';
 
   export default {
     name: "ActivityList",
-    components: {EditForm, VoluntaryFrom},
+    components: {VoluntaryFrom},
     data() {
       return {
         lists: [{
           // activityName:'1111',
         }],
-        dialogFormVisible: false
+        // dialogFormVisible: false
       }
     },
     mounted() {
@@ -93,38 +92,36 @@
       // }
     },
     methods: {
-      handleClose() {
-        this.dialogFormVisible = false
-      },
-      searchForm() {
-        this.loadLists();
-      },
-      handleClick() {
-        this.$refs.editForm.dialogFormVisible = true
-        this.$refs.editForm.form = {
-          id: item.id,
-          activityName: item.activityName,
-          type: item.type,
-          address: item.address,
-          applyTime: item.applyTime,
-          activityTime: item.activityTime,
-          releaseTime: item.releaseTime,
-          details: item.details,
-        }
-      },
-      editList(item) {
-        this.$refs.editForm.dialogFormVisible = true
-        this.$refs.editForm.form = {
-          id: item.id,
-          activityName: item.activityName,
-          type: item.type,
-          address: item.address,
-          applyTime: item.applyTime,
-          activityTime: item.activityTime,
-          releaseTime: item.releaseTime,
-          details: item.details,
-          // peopleNumber: item.peopleNumber,
-          // conditional: item.conditional,
+      // handleClose() {
+      //   this.dialogFormVisible = false
+      // },
+      // searchForm() {
+      //   this.loadLists();
+      // },
+      // handleClick() {
+      //   this.$refs.editForm.dialogFormVisible = true
+      //   this.$refs.editForm.form = {
+      //     id: item.id,
+      //     activityName: item.activityName,
+      //     type: item.type,
+      //     address: item.address,
+      //     applyTime: item.applyTime,
+      //     activityTime: item.activityTime,
+      //     releaseTime: item.releaseTime,
+      //     details: item.details,
+      //   }
+      // },
+      voluntary_form(row) {
+        this.$refs.voluntary_form.dialogFormVisible = true
+        this.$refs.voluntary_form.ruleForm = {
+          id: row.id,
+          activityName: row.activityName,
+          type: row.type,
+          address: row.address,
+          applyTime: row.applyTime,
+          activityTime: row.activityTime,
+          releaseTime: row.releaseTime,
+          details: row.details,
         }
       },
       loadLists() {
