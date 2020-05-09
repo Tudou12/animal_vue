@@ -28,7 +28,7 @@
       </a>
     </el-menu-item>
     <el-menu-item index="4">
-      <a href="#footer">
+      <a href="#aboot">
        <i class="el-icon-bottom"></i>
         <span slot="title">回到底部</span>
       </a>

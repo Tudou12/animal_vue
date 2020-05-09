@@ -17,14 +17,14 @@
         <stray-cat  ref="strayCat"></stray-cat>
       </div>
     </div>
-    <div id="footer">
-        <footer  ref="footer"></footer>
+    <div id="about">
+        <about  ref="about"></about>
       </div>
   </div>
 </template>
 <script>
   import NavMenu from '../common/NavMenu';
-  import Footer from '../common/Footer';
+  import About from '@/components/common/About'
   import Side from '../adopt/Side';
   import StrayCat from "../adopt/StrayCat";
   // import StrayDog from "../adopt/StrayDog";
@@ -33,7 +33,7 @@
 
   export default {
     name: 'Adopt',
-    components: {NavMenu, Side, StrayCat, Why, Step,Footer},
+    components: {NavMenu, Side, StrayCat, Why, Step,About},
     data() {
       return {};
     },

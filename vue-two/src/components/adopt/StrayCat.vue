@@ -1,16 +1,18 @@
 <template>
   <div class="body_strayCat">
-    <h1>领养专区</h1>
-    <a href="Cat">
-      <h3>更多</h3>
-      <!-- <img src="../../assets/more.png" /> -->
-    </a>
+    <el-card class="box-card">
+  <div slot="header" class="clearfix">
+    <span>领养专区</span>
+        <a href="Cat">
+         <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
+        </a>
+  </div>
     <!-- <el-card class="box-card"> -->
       <el-row class="car">
         <el-tooltip effect="dark" placement="right"
                     v-for="item in cats"
                     :key="item.id">
-          <p slot="content"><img :src="item.animalImage" alt="封面" class="big"></p>
+          <p slot="content"><img class="big_image" :src="item.animalImage" alt="封面" ></p>
           <p slot="content" style="font-size: 14px;margin-bottom: 6px;">名字：{{item.animalName}}</p>
           <p slot="content" style="font-size: 13px;margin-bottom: 6px">动物编号：{{item.animalNo}}</p>
           <p slot="content" style="font-size: 13px;margin-bottom: 6px">动物类型：{{item.animalType}}</p>
@@ -18,7 +20,7 @@
           <el-card style="width: 210px;margin: 18px;height: 300px;float: left;" class="cat"
                    bodyStyle="padding:5px" shadow="hover">
             <div class="animalImage" @click="AdoptCat(item)">
-              <img :src="item.animalImage" alt="封面">
+              <img  class="image" :src="item.animalImage" alt="封面">
             </div>
             <div class="info">
               <div class="name">
@@ -32,7 +34,7 @@
         </el-tooltip>
       </el-row>
     <!-- </el-card> -->
-
+    </el-card>
   </div>
 </template>
 
@@ -84,13 +86,23 @@
     margin-right: auto;
   }
 
-  img {
+  /* img {
     width: 175px;
     height: 190px;
     margin-bottom: 7px;
     overflow: hidden;
     cursor: pointer;
+  } */
+  .image {
+    width: 100%;
+    display: block;
   }
+  .big_image{
+
+    width: 100%;
+    display: block;
+  }
+
 
   .name {
     font-size: 14px;

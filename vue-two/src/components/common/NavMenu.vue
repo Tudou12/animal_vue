@@ -2,41 +2,33 @@
   <div class="nav">
     <el-menu
       :default-active="path"
-      router
+
       mode="horizontal"
-      background-color="#484848"
-      text-color="#D8D8D8	"
-      active-text-color="#FFFFFF"
+      el-menu
+      class="el-menu-demo"
+      @select="handleSelect"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      style="min-width: 100%;position: relative;margin-top: 0px"
     >
-      <!-- style="min-width: 100%;position: relative;margin-top: 0px" -->
-      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">{{ item.navItem }}</el-menu-item>
       <span style="position: absolute;padding-top: 10px;right: 43%; font-size: 25px; font-weight: bold; color:#FFFFFF">流浪动物社区</span>
+      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">{{ item.navItem }}</el-menu-item>
       <div class="right">
         <!-- <a href="Login" style="color: #FFFFFF;float: right;padding: 15px;">登录</a> -->
-       <my-home style="color: #FFFFFF;float: right;padding: 20px;">我的</my-home>
-       <admin-home style="color: #FFFFFF;float: right;padding: 20px;">我的</admin-home>
-       <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 40px;color: #222;padding: 10px"></i>
-        <el-dropdown class="user-name" trigger="click" @command="handleCommand">
-          <el-dropdown-menu slot="dropdown">
-            <span class="el-dropdown-link">
-            {{username}}
-            <i class="el-icon-caret-bottom"></i>
-            </span>
-            <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+       <my style="color: #FFFFFF;float: right;padding: 20px;">我的</my>
       </div>
     </el-menu>
   </div>
 </template>
 
 <script>
-import MyHome from "../my/MyHome";
+import My from "../my/My";
 import AdminHome from "../my/AdminHome";
 
 export default {
   name: "NavMenu",
-  components: { MyHome,AdminHome },
+  components: { My,AdminHome },
   data() {
     return {
       navList: [
@@ -44,31 +36,17 @@ export default {
         { name: "/Adopt", navItem: "领养" },
         { name: "/Voluntary", navItem: "志愿者" },
         { name: "/DonateHome", navItem: "爱心捐赠" },
-        { name: "/Taobao", navItem: "爱心小店" }
+        // { name: "/Taobao", navItem: "爱心小店" }
       ],
       keywords: "",
     };
   },
   mounted: {
-    logout () {
-        var _this = this
-        this.$axios.get('/logout').then(resp => {
-          if (resp.data.code === 200) {
-            // 前后端状态保持一致
-            _this.$store.commit('logout')
-            _this.$router.replace('/login')
-          }
-        })
-      }
   },
   computed: {
-    username() {
-            let username = localStorage.getItem('ms_username');
-            return username ? username : this.name;
-        },
-    hoverBackground() {
-      return "#ffd04b";
-    },
+    hoverBackground () {
+        return '#E6A23C'
+      },
     path() {
     // 获得第一级路由，以设置导航栏高亮
     var x = this.$route.path.indexOf("/", 1);
@@ -99,8 +77,8 @@ span {
   height: 100%;
   width: 100%;
 }
-.el-icon-switch-button {
+/* .el-icon-switch-button {
     cursor: pointer;
     outline:0;
-  }
+  } */
 </style>

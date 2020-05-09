@@ -3,49 +3,47 @@
   <el-form :model="loginForm" :rules="rules" class="login-container" label-position="left"
            label-width="0px" v-loading="loading">
     <div id="from_top">
-            <h2>注册表</h2>
+            <h2 style="text-align: center;">注册表</h2>
           </div>
-          <el-form-item label="姓名">
-            <el-input v-model="ruleForm2.name" placeholder="请输入"></el-input>
+          <el-form-item style="margin-top:20px;" prop="username" >
+            <el-input v-model="loginForm.username" placeholder="请输入用户名"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="pass">
+          <el-form-item  prop="password">
             <el-input
               type="password"
-              v-model="ruleForm2.pass"
+              v-model="loginForm.password"
               auto-complete="off"
-              placeholder="请输入"
+              placeholder="请输入密码"
             ></el-input>
           </el-form-item>
-          <el-form-item label="确认密码" prop="checkPass">
+          <el-form-item  prop="checkPass">
             <el-input
               type="password"
-              v-model="ruleForm2.checkPass"
+              v-model="loginForm.checkPass"
               auto-complete="off"
-              placeholder="请输入"
+              placeholder="请再次输入密码"
             ></el-input>
           </el-form-item>
-          <el-form-item label="性别" prop="sex" placeholder="请输入">
-            <el-radio-group v-model="ruleForm2.sex">
-              <el-radio label="男"></el-radio>
-              <el-radio label="女"></el-radio>
+          <el-form-item  prop="sex" placeholder="请选择性别">
+            <el-radio-group v-model="loginForm.sex">
+              <el-radio value="1" label="1">男</el-radio>
+              <el-radio value="2" label="2">女</el-radio>
             </el-radio-group>
           </el-form-item>
           <div class="button" placeholder="请输入">
             <el-form-item style="width: 100%">
-              <el-button
-                type="primary"
-                style="background: #505458;border: none"
-                @click="resetForm('ruleForm2')"
-              >重置</el-button>
               <!-- <el-button
                 type="primary"
                 style="background: #505458;border: none"
-                @click="submitForm('ruleForm2')"
-              >注册</el-button> -->
+                @click="resetForm('loginForm')"
+              >重置</el-button> -->
+              <el-button
+                type="text"
+                @click="back()"
+              >返回上一步</el-button>
               <el-button
               type="primary"
-               style="width: 40%;background: #505458;border: none"
-               v-on:click="register"
+               style="width: 40%;background: #505458;border: none; margin-left:130px" v-on:click="register"
                >注册</el-button>
 
             </el-form-item>
@@ -55,7 +53,7 @@
 </template>
 <script>
   export default{
-    name:"Register",
+    // name:"Register",
     data () {
       return {
         rules: {
@@ -66,23 +64,25 @@
         loginForm: {
           username: '',
           password: '',
-          name: '',
-          phone: '',
-          email: ''
+          checkpass:'',
+          sex: '',
         },
         loading: false
       }
     },
     methods: {
+      back(){
+        this.$router.replace({
+              path: "/login",
+            });
+      },
       register () {
         var _this = this
         this.$axios
           .post('/register', {
             username: this.loginForm.username,
             password: this.loginForm.password,
-            name: this.loginForm.name,
-            phone: this.loginForm.phone,
-            email: this.loginForm.email
+            sex: this.loginForm.sex,
           })
           .then(resp => {
             if (resp.data.code === 200) {
@@ -104,11 +104,13 @@
 <style>
   #paper {
     /* background:url("../assets/img/bg/eva1.jpg") no-repeat; */
+    background-color: darkseagreen;
     background-position: center;
     height: 100%;
     width: 100%;
     background-size: cover;
     position: fixed;
+
   }
   body{
     margin: -5px 0px;

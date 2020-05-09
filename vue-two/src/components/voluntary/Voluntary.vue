@@ -30,15 +30,16 @@
 <!--          <activity-manage id="activity-manage"></activity-manage>-->
 <!--        </div>-->
       </div>
-      <div class="footer">
-          <footer id="footer"></footer>
+      <div class="aboot">
+          <aboot id="aboot"></aboot>
         </div>
     </div>
   </div>
 </template>
 <script>
   import NavMenu from '../common/NavMenu';
-  import Footer from '../common/Footer';
+  // import Footer from '../common/Footer';
+  import About from '@/components/common/About'
 
   import SideMenu from './SideMenu';
   import VolIntroduce from './VolIntroduce';
@@ -48,7 +49,7 @@
 
   export default {
     name: 'Voluntary',
-    components: {NavMenu, SideMenu, VolIntroduce, Activity, HisActivity, ActivityList,Footer},
+    components: {NavMenu, SideMenu, VolIntroduce, Activity, HisActivity, ActivityList,About},
     data() {
       return {
         imgs: [

@@ -1,5 +1,5 @@
 <template>
-  <div id="Home">
+  <div>
     <div id="body">
       <el-dialog title="走失宠物信息表" :visible.sync="dialogFormVisible" @close="clear" style="text-align:center;font-size: 30px">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="50px" class="ruleForm">

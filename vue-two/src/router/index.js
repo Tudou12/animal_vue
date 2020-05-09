@@ -80,15 +80,20 @@ export default new Router({
       component: () => import('../components/my/manage/ActivityManage'),
     },
     {
+      path: '/mineHome',
+      name: 'MineHome',
+      component: () => import('../components/my/MineHome'),
+    },
+    {
       path: '/Cat',
       name: 'Cat',
       component: () => import('../components/adopt/Cat'),
     },
-    {
-      path: '/Taobao',
-      name: 'Taobao',
-      component: () => import('../components/Taobao'),
-    },
+    // {
+    //   path: '/Taobao',
+    //   name: 'Taobao',
+    //   component: () => import('../components/Taobao'),
+    // },
 
     {
       path: '/DonateHome',

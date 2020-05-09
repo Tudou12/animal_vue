@@ -20,7 +20,7 @@
       </div>
       <!-- <el-row></el-row> -->
     </div>
-    <footer></footer>
+    <About></About>
   </div>
 </template>
 <script>
@@ -29,11 +29,11 @@ import Dog from "./Dog";
 import Step from "../home/Step";
 import Cat from "../home/Cat";
 import News from "../home/News";
-import Footer from "../common/Footer";
+import About from '@/components/common/About'
 import SearchBar from "../common/SearchBar"
 export default {
   name: "Home",
-  components: { NavMenu, Dog, Cat, News, Step, Footer, SearchBar},
+  components: { NavMenu, Dog, Cat, News, Step, About, SearchBar},
   data() {
     return {};
   },
